@@ -11,14 +11,18 @@
 # include "getnextline/get_next_line.h"
 # include "libft/libft.h"
 
-typedef struct s_line_list
-{
-	float				x;
-	float				y;
-	float				z;
-	unsigned long		color;
-	struct s_line_list	*next;
-}				t_line_list;
+typedef struct s_line {
+	int dx;
+	int dy;
+  	int err;
+	int sx;
+	int sy;
+	int e2;
+	int	x0;
+	int	y0;
+	int	x1;
+	int	y1;
+}			t_line;
 
 typedef struct s_arr_map {
 	int			***map;
@@ -42,5 +46,8 @@ void		put_image(t_data img);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_arr_map	get_file(char *filename);
 void		scale(t_arr_map map, float scale_val);
+void		loop_draw(t_arr_map map, t_data img);
+void		draw_line(t_arr_map	map, int x, int y, t_data img);
+void		draw_line_vert(t_arr_map	map, int x, int y, t_data img);
 
 #endif
