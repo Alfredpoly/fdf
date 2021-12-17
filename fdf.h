@@ -21,7 +21,7 @@ typedef struct s_line_list
 }				t_line_list;
 
 typedef struct s_arr_map {
-	int			**map;
+	int			***map;
 	int			row;
 	int			col;
 }				t_arr_map;
@@ -37,9 +37,10 @@ typedef struct s_data
 	int		endian;
 }				t_data;
 
-t_data	init_window(void);
-void	put_image(t_data img);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	get_file(char *filename);
+t_data		init_window(void);
+void		put_image(t_data img);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+t_arr_map	get_file(char *filename);
+void		scale(t_arr_map map, float scale_val);
 
 #endif

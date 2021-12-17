@@ -6,7 +6,7 @@
 /*   By: fpolycar <fpolycar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/16 11:00:28 by fpolycar      #+#    #+#                 */
-/*   Updated: 2021/12/17 10:58:59 by fpolycar      ########   odam.nl         */
+/*   Updated: 2021/12/17 11:18:57 by fpolycar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,24 @@ void	get_char_in_line(char *str, int y, t_arr_map *map)
 	value = ft_split(str, ' ');
 	x = 0;
 	if (y == 0)
-		map->map = (int **)malloc(map->row * sizeof(int *));
+		map->map = (int ***)malloc(map->row * sizeof(int **));
 	while (value[x] && value[x][0] != '\n')
 	{
-		map->map[y] = (int *)malloc(map->col * sizeof(int));
+		map->map[y] = (int **)malloc(map->col * sizeof(int *));
 		while (value[x])
 		{
 			if (value[x][0] == '\n')
 				break ;
-			map->map[y][x] = ft_atoi(value[x]);
+			map->map[y][x] = (int *)malloc(3 * sizeof(int));
+			map->map[y][x][0] = x;
+			map->map[y][x][1] = y;
+			map->map[y][x][2] = ft_atoi(value[x]);
 			x++;
 		}
 	}
 }
 
-void	get_file(char *filename)
+t_arr_map	get_file(char *filename)
 {
 	int			fd;
 	char		*str;
@@ -75,4 +78,5 @@ void	get_file(char *filename)
 		str = get_next_line(fd);
 		y++;
 	}
+	return (map);
 }
