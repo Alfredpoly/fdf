@@ -15,6 +15,7 @@
 void	col_row(char *filename, t_arr_map *map)
 {
 	char		**value;
+	char		**color;
 	char		*str;
 	int			fd;
 
@@ -27,7 +28,8 @@ void	col_row(char *filename, t_arr_map *map)
 		value = ft_split(str, ' ');
 		while (value[map->col])
 		{
-			if (value[map->col][0] == '\n')
+			color = ft_split(value[map->col], ',');
+			if (color[0][0] == '\n')
 				break ;
 			map->col++;
 		}

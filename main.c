@@ -6,7 +6,7 @@
 /*   By: fpolycar <fpolycar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/15 16:44:14 by fpolycar      #+#    #+#                 */
-/*   Updated: 2021/12/17 15:20:25 by fpolycar      ########   odam.nl         */
+/*   Updated: 2022/01/05 15:47:53 by alfred        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	main(int argc, char **argv)
 {
-	t_data		img;
+	t_data		fdf;
 	t_arr_map	map;
-	int			x;
-	int			y;
 
 	if (argc == 2)
 	{
-		// img = init_window();
+		fdf = init_window();
+		fdf.camera = camera_init();
 		map = get_file(argv[1]);
-		scale(map, 1.2);
-		loop_draw(map, img);
-		// put_image(img);
+		scale(map, 1);
+		loop_draw(map, fdf);
+		// mlx_key_hook(fdf.win, key_hook, &fdf);
+		put_image(fdf);
 	}
 }
