@@ -6,7 +6,7 @@
 /*   By: alfred <alfred@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/05 10:23:05 by alfred        #+#    #+#                 */
-/*   Updated: 2022/01/05 15:46:27 by alfred        ########   odam.nl         */
+/*   Updated: 2022/01/07 16:05:34 by alfred        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,13 @@
 # define ARROW_LEFT 123
 # define ARROW_RIGHT 124
 # define KEY_A 0
+# define ESC 53
 # define KEY_S 1
 # define KEY_D 2
+# define KEY_F 3
+# define KEY_Q 12
 # define KEY_W 13
+# define KEY_E 14
 # define KEY_R 15
 # define KEY_PLUS 24
 # define KEY_MINUS 27
@@ -49,7 +53,7 @@ typedef struct s_line {
 
 typedef struct s_camera
 {
-	int				zoom;
+	double			zoom;
 	double			alpha;
 	double			beta;
 	double			gamma;
@@ -74,13 +78,14 @@ typedef struct s_point
 
 typedef struct s_data
 {
-	int			***map;
+	t_arr_map	map;
 	int			row;
 	int			col;
 	void		*mlx;
 	void		*win;
 	void		*img;
 	char		*addr;
+	char		*filename;
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
@@ -93,9 +98,17 @@ void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_arr_map	get_file(char *filename);
 void		scale(t_arr_map map, float scale_val);
 void		loop_draw(t_arr_map map, t_data img);
-void		draw_line(t_data img, int x, int y, t_arr_map map);
+void		draw_line(t_data fdf, t_point f, t_point s);
 void		init_brehensam(t_line coor, t_data img);
 t_camera	*camera_init(void);
-void		key_hook(int keycode, t_data *fdf);
+int			key_hook(int keycode, t_data *fdf);
+t_point		new_point(int x, int y, t_arr_map *map);
+t_point		project(t_point p, t_data *fdf);
+int			key_press(int key, void *param);
+void		rotate(int key, t_data *fdf);
+void		move(int key, t_data *fdf);
+void		flatten(int key, t_data *fdf);
+int			zoom(int keycode, t_data *fdf);
+void		loop_brehensam(t_line coor, t_point f, t_point s, t_data fdf);
 
 #endif

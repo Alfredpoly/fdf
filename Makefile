@@ -4,7 +4,7 @@ RM = rm -f
 FDF = fdf
 LIBFT = ./libft/libft.a
 
-c-files = main.c getnextline/get_next_line.c getnextline/get_next_line_utils.c init.c map.c translation.c draw_line.c hook.c
+c-files = main.c getnextline/get_next_line.c getnextline/get_next_line_utils.c init.c map.c translation.c draw_line.c hook.c utils.c project.c keyboard.c
 
 o-files = $(c-files:.c=.o)
 

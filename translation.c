@@ -6,7 +6,7 @@
 /*   By: fpolycar <fpolycar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/17 11:19:38 by fpolycar      #+#    #+#                 */
-/*   Updated: 2021/12/17 11:50:50 by fpolycar      ########   odam.nl         */
+/*   Updated: 2022/01/07 13:27:45 by alfred        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	center(float unit, t_arr_map map)
 		x = 0;
 		while (x < map.col)
 		{
+			map.map[y][x][2] = (map.map[y][x][2] * unit);
 			map.map[y][x][0] = (WINDOW_X / 2) + (map.map[y][x][0])
 				- (map.col * unit / 4) + (map.row * unit / 4);
 			map.map[y][x][1] = (WINDOW_Y / 2) + (map.map[y][x][1]) / 2
-				- ((map.col + map.row) * unit / 8) - map.map[y][x][2];
-			map.map[y][x][2] = (map.map[y][x][2] * unit);
+				- ((map.col + map.row) * unit / 8) - (map.map[y][x][2] / 15);
 			x++;
 		}
 		y++;
