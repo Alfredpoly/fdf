@@ -6,7 +6,7 @@
 /*   By: fpolycar <fpolycar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/17 14:21:37 by fpolycar      #+#    #+#                 */
-/*   Updated: 2022/01/07 16:46:29 by alfred        ########   odam.nl         */
+/*   Updated: 2022/01/10 09:01:14 by alfred        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	loop_draw(t_arr_map map, t_data fdf)
 	int	x;
 	int	y;
 
-	scale(map, fdf.camera->zoom);
 	drawbackground(fdf);
 	y = 0;
 	while (y < map.row)
@@ -57,6 +56,7 @@ void	loop_draw(t_arr_map map, t_data fdf)
 		}
 		y++;
 	}
+	mlx_put_image_to_window(fdf.mlx, fdf.win, fdf.img, 0, 0);
 }
 
 void	draw_line(t_data fdf, t_point f, t_point s)
@@ -90,7 +90,7 @@ void	loop_brehensam(t_line coor, t_point f, t_point s, t_data fdf)
 		if (f.x == s.x && f.y == s.y)
 			break ;
 		coor.e2 = coor.err;
-		if (coor.e2 >- coor.dx)
+		if (coor.e2 > coor.dx)
 		{
 			coor.err -= coor.dy;
 			f.x += coor.sx;
@@ -101,5 +101,4 @@ void	loop_brehensam(t_line coor, t_point f, t_point s, t_data fdf)
 			f.y += coor.sy;
 		}
 	}
-	mlx_put_image_to_window(fdf.mlx, fdf.win, fdf.img, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: fpolycar <fpolycar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/15 16:43:21 by fpolycar      #+#    #+#                 */
-/*   Updated: 2022/01/07 16:56:18 by alfred        ########   odam.nl         */
+/*   Updated: 2022/01/10 09:03:03 by alfred        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@ t_data	init_window(void)
 	return (fdf);
 }
 
-t_camera	*camera_init(void)
+t_camera	*camera_init(t_data fdf)
 {
 	t_camera	*camera;
 
 	camera = (t_camera *)malloc(sizeof(t_camera));
-	camera->zoom = 1;
+	if (WINDOW_X / fdf.map.col / 2 <= WINDOW_Y / fdf.map.row / 2)
+		camera->zoom = WINDOW_X / fdf.map.col / 2;
+	else
+		camera->zoom = WINDOW_Y / fdf.map.row / 2;
 	camera->alpha = 0;
 	camera->beta = 0;
 	camera->gamma = 0;

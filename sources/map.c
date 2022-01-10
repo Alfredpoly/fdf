@@ -6,11 +6,13 @@
 /*   By: fpolycar <fpolycar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/16 11:00:28 by fpolycar      #+#    #+#                 */
-/*   Updated: 2021/12/17 11:18:57 by fpolycar      ########   odam.nl         */
+/*   Updated: 2022/01/09 12:33:48 by alfred        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "libft.h"
+#include "get_next_line.h"
 
 void	col_row(char *filename, t_arr_map *map)
 {

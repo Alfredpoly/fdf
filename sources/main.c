@@ -6,7 +6,7 @@
 /*   By: fpolycar <fpolycar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/15 16:44:14 by fpolycar      #+#    #+#                 */
-/*   Updated: 2022/01/07 15:56:21 by alfred        ########   odam.nl         */
+/*   Updated: 2022/01/09 12:34:18 by alfred        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		fdf = init_window();
-		fdf.camera = camera_init();
-		fdf.filename = argv[1];
-		fdf.map = get_file(fdf.filename);
+		fdf.map = get_file(argv[1]);
+		fdf.camera = camera_init(fdf);
 		mlx_hook(fdf.win, 2, 0, key_press, &fdf);
 		mlx_hook(fdf.win, 17, 0, close_win, &fdf);
 		loop_draw(fdf.map, fdf);

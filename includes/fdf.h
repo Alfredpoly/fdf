@@ -6,7 +6,7 @@
 /*   By: alfred <alfred@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/05 10:23:05 by alfred        #+#    #+#                 */
-/*   Updated: 2022/01/07 16:05:34 by alfred        ########   odam.nl         */
+/*   Updated: 2022/01/09 12:23:25 by alfred        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 # include <stdlib.h>
 # include <math.h>
 # include <fcntl.h>
-# include "getnextline/get_next_line.h"
-# include "libft/libft.h"
+# include "get_next_line.h"
+# include "libft.h"
 
 typedef struct s_line {
 	int	dx;
@@ -100,7 +100,7 @@ void		scale(t_arr_map map, float scale_val);
 void		loop_draw(t_arr_map map, t_data img);
 void		draw_line(t_data fdf, t_point f, t_point s);
 void		init_brehensam(t_line coor, t_data img);
-t_camera	*camera_init(void);
+t_camera	*camera_init(t_data fdf);
 int			key_hook(int keycode, t_data *fdf);
 t_point		new_point(int x, int y, t_arr_map *map);
 t_point		project(t_point p, t_data *fdf);

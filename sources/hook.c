@@ -6,7 +6,7 @@
 /*   By: alfred <alfred@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/05 13:11:09 by alfred        #+#    #+#                 */
-/*   Updated: 2022/01/07 16:36:18 by alfred        ########   odam.nl         */
+/*   Updated: 2022/01/10 09:02:37 by alfred        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	rotate(int key, t_data *fdf)
 		fdf->camera->gamma += 0.05;
 	else if (key == KEY_D)
 		fdf->camera->gamma -= 0.05;
-	fdf->map = get_file(fdf->filename);
 	loop_draw(fdf->map, *fdf);
 }
 
@@ -40,7 +39,6 @@ void	move(int key, t_data *fdf)
 		fdf->camera->y_offset -= 10;
 	else
 		fdf->camera->y_offset += 10;
-	fdf->map = get_file(fdf->filename);
 	loop_draw(fdf->map, *fdf);
 }
 
@@ -54,7 +52,6 @@ void	flatten(int key, t_data *fdf)
 		fdf->camera->z_divisor = 0.1;
 	else if (fdf->camera->z_divisor > 10)
 		fdf->camera->z_divisor = 10;
-	fdf->map = get_file(fdf->filename);
 	loop_draw(fdf->map, *fdf);
 }
 
@@ -68,7 +65,6 @@ int	zoom(int keycode, t_data *fdf)
 	{
 		fdf->camera->zoom = fdf->camera->zoom * 1.1;
 	}
-	fdf->map = get_file(fdf->filename);
 	loop_draw(fdf->map, *fdf);
 	return (0);
 }
