@@ -6,13 +6,13 @@
 /*   By: fpolycar <fpolycar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/17 14:21:37 by fpolycar      #+#    #+#                 */
-/*   Updated: 2022/01/10 09:01:14 by alfred        ########   odam.nl         */
+/*   Updated: 2022/01/10 15:03:23 by alfred        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	drawbackground(t_data fdf)
+void	background(t_data fdf)
 {
 	int	x;
 	int	y;
@@ -35,7 +35,7 @@ void	loop_draw(t_arr_map map, t_data fdf)
 	int	x;
 	int	y;
 
-	drawbackground(fdf);
+	background(fdf);
 	y = 0;
 	while (y < map.row)
 	{
@@ -82,23 +82,27 @@ void	draw_line(t_data fdf, t_point f, t_point s)
 
 void	loop_brehensam(t_line coor, t_point f, t_point s, t_data fdf)
 {
+	t_point	cur;
+
+	cur.x = f.x;
+	cur.y = f.y;
 	while (1)
 	{
-		if (0 < f.x && WINDOW_X > f.x
-			&& 0 < f.y && WINDOW_Y > f.y)
-			my_mlx_pixel_put(&fdf, f.x, f.y, 0xffffff);
-		if (f.x == s.x && f.y == s.y)
+		if (0 < cur.x && WINDOW_X > cur.x
+			&& 0 < cur.y && WINDOW_Y > cur.y)
+			my_mlx_pixel_put(&fdf, cur.x, cur.y, get_color(cur, f, s, coor));
+		if (cur.x == s.x && cur.y == s.y)
 			break ;
 		coor.e2 = coor.err;
-		if (coor.e2 > coor.dx)
+		if (coor.e2 > -coor.dx)
 		{
 			coor.err -= coor.dy;
-			f.x += coor.sx;
+			cur.x += coor.sx;
 		}
 		if (coor.e2 < coor.dy)
 		{
 			coor.err += coor.dx;
-			f.y += coor.sy;
+			cur.y += coor.sy;
 		}
 	}
 }

@@ -6,7 +6,7 @@
 #    By: alfred <alfred@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/01/09 10:39:07 by alfred        #+#    #+#                  #
-#    Updated: 2022/01/09 13:04:08 by alfred        ########   odam.nl          #
+#    Updated: 2022/01/11 14:50:23 by alfred        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = ./sources/
-c-files = main.c init.c map.c translation.c draw_line.c hook.c utils.c project.c keyboard.c
+c-files = main.c init.c map.c draw_line.c hook.c utils.c project.c keyboard.c colors.c
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(c-files))
 
 OBJECTS_DIRECTORY = ./objects/
@@ -41,13 +41,13 @@ OBJECTS = $(addprefix $(OBJECTS_DIRECTORY), $(o-files))
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS)
-	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJECTS) -o $(NAME)
+	$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJECTS) -o $(NAME)
 
 $(OBJECTS_DIRECTORY):
-	@mkdir -p $(OBJECTS_DIRECTORY)
+	mkdir -p $(OBJECTS_DIRECTORY)
 
 $(OBJECTS_DIRECTORY)%.o: $(SOURCES_DIRECTORY)%.c $(HEADERS)
-	@$(CC) $(FLAGS) -c $(INCLUDES) -o $@ $<
+	$(CC) $(FLAGS) -c -g $(INCLUDES) -o $@ $<
 	
 $(LIBFT):
 	@make bonus -C $(LIBFT_DIRECTORY)

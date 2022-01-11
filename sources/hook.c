@@ -6,7 +6,7 @@
 /*   By: alfred <alfred@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/05 13:11:09 by alfred        #+#    #+#                 */
-/*   Updated: 2022/01/10 09:02:37 by alfred        ########   odam.nl         */
+/*   Updated: 2022/01/11 13:15:39 by alfred        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ int	zoom(int keycode, t_data *fdf)
 {
 	if (keycode == KEY_PLUS)
 	{
-		fdf->camera->zoom = fdf->camera->zoom / 1.1;
+		fdf->camera->zoom = fdf->camera->zoom * 1.1;
 	}
 	if (keycode == KEY_MINUS)
 	{
-		fdf->camera->zoom = fdf->camera->zoom * 1.1;
+		fdf->camera->zoom = fdf->camera->zoom / 1.1;
 	}
 	loop_draw(fdf->map, *fdf);
 	return (0);

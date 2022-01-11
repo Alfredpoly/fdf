@@ -6,7 +6,7 @@
 /*   By: alfred <alfred@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/05 10:23:05 by alfred        #+#    #+#                 */
-/*   Updated: 2022/01/09 12:23:25 by alfred        ########   odam.nl         */
+/*   Updated: 2022/01/10 11:25:49 by alfred        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_camera
 }					t_camera;
 
 typedef struct s_arr_map {
-	int			***map;
+	int			***color_z;
 	int			row;
 	int			col;
 }				t_arr_map;
@@ -92,6 +92,13 @@ typedef struct s_data
 	t_camera	*camera;
 }				t_data;
 
+typedef struct s_rgb
+{
+	int	r;
+	int	g;
+	int	b;
+}				t_rgb;
+
 t_data		init_window(void);
 void		put_image(t_data img);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -110,5 +117,7 @@ void		move(int key, t_data *fdf);
 void		flatten(int key, t_data *fdf);
 int			zoom(int keycode, t_data *fdf);
 void		loop_brehensam(t_line coor, t_point f, t_point s, t_data fdf);
+int			get_color(t_point current, t_point f, t_point s, t_line coor);
+unsigned long	hex_to_deci_color(char *str);
 
 #endif
