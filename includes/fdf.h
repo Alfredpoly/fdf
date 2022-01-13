@@ -6,7 +6,7 @@
 /*   By: alfred <alfred@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/05 10:23:05 by alfred        #+#    #+#                 */
-/*   Updated: 2022/01/10 11:25:49 by alfred        ########   odam.nl         */
+/*   Updated: 2022/01/12 15:45:21 by alfred        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # include <stdlib.h>
 # include <math.h>
 # include <fcntl.h>
+# include "mem.h"
 # include "get_next_line.h"
 # include "libft.h"
 

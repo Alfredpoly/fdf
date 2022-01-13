@@ -6,7 +6,7 @@
 #    By: alfred <alfred@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/01/09 10:39:07 by alfred        #+#    #+#                  #
-#    Updated: 2022/01/11 14:50:23 by alfred        ########   odam.nl          #
+#    Updated: 2022/01/12 16:05:04 by alfred        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = fdf
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-LIBRARIES = -L$(MLX_DIRECTORY) -L$(LIBFT_DIRECTORY) -lmlx -lft -lm -framework OpenGL -framework AppKit
-INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(MLX_HEADERS)
+LIBRARIES = -L$(MLX_DIRECTORY) -L$(LIBFT_DIRECTORY) Memd/libmemd.a -lm -lft  -lmlx -framework OpenGL -framework AppKit
+INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(MLX_HEADERS) -I./Memd/
 
 LIBFT = $(LIBFT_DIRECTORY)libft.a
 LIBFT_DIRECTORY = ./libft/
@@ -40,8 +40,8 @@ OBJECTS = $(addprefix $(OBJECTS_DIRECTORY), $(o-files))
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS)
-	$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJECTS) -o $(NAME)
+$(NAME): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS) Memd/libmemd.a
+	$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) -o $(NAME) $(LIBRARIES)
 
 $(OBJECTS_DIRECTORY):
 	mkdir -p $(OBJECTS_DIRECTORY)

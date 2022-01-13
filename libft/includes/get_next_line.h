@@ -15,5 +15,9 @@ char	*ft_substr_next(char const *s, unsigned int start, size_t len);
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 
+#  ifndef OPEN_MAX
+#   define OPEN_MAX 42
+
+#  endif
 # endif
 #endif

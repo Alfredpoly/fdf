@@ -6,13 +6,11 @@
 /*   By: fpolycar <fpolycar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/16 11:00:28 by fpolycar      #+#    #+#                 */
-/*   Updated: 2022/01/11 13:58:54 by alfred        ########   odam.nl         */
+/*   Updated: 2022/01/12 16:07:20 by alfred        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "libft.h"
-#include "get_next_line.h"
 
 void	free_arr(t_arr_map *map)
 {
@@ -87,11 +85,9 @@ void	get_char_in_line(char *str, int y, t_arr_map *map)
 			color = ft_split(value[x], ',');
 			map->color_z[y][x][0] = ft_atoi(value[x]);
 			map->color_z[y][x][1] = hex_to_deci_color(color[1]);
-			free(color);
 			x++;
 		}
 	}
-	free(value);
 }
 
 t_arr_map	get_file(char *filename)
