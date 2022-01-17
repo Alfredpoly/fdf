@@ -6,7 +6,7 @@
 /*   By: fpolycar <fpolycar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/16 11:00:28 by fpolycar      #+#    #+#                 */
-/*   Updated: 2022/01/12 16:07:20 by alfred        ########   odam.nl         */
+/*   Updated: 2022/01/17 10:44:49 by fpolycar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,20 @@ void	free_arr(t_arr_map *map)
 {
 	int	x;
 	int	y;
-	int	val;
 
 	y = 0;
 	while (y < map->row)
 	{
-		free(map->color_z[y]);
 		x = 0;
-		while (x < map->row)
+		while (x < map->col)
 		{
 			free(map->color_z[y][x]);
-			val = 0;
-			while (val < 2)
-			{
-				free(map->color_z[y][x]);
-				val++;
-			}
 			x++;
 		}
+		free(map->color_z[y]);
 		y++;
 	}
+	free(map->color_z);
 }
 
 void	col_row(char *filename, t_arr_map *map)
@@ -64,6 +58,16 @@ void	col_row(char *filename, t_arr_map *map)
 	}
 }
 
+void	init_arr(t_arr_map *map, int y)
+{
+	if (y == 0)
+	{
+		map->color_z = (int ***)malloc(map->row * sizeof(int **));
+		if (!map->color_z)
+			free_arr(map);
+	}
+}
+
 void	get_char_in_line(char *str, int y, t_arr_map *map)
 {
 	char	**value;
@@ -72,16 +76,19 @@ void	get_char_in_line(char *str, int y, t_arr_map *map)
 
 	value = ft_split(str, ' ');
 	x = 0;
-	if (y == 0)
-		map->color_z = (int ***)malloc(map->row * sizeof(int **));
+	init_arr(map, y);
 	while (value[x] && value[x][0] != '\n')
 	{
 		map->color_z[y] = (int **)malloc(map->col * sizeof(int *));
+		if (!map->color_z[y])
+			free_arr(map);
 		while (value[x])
 		{
 			if (value[x][0] == '\n')
 				break ;
 			map->color_z[y][x] = (int *)malloc(2 * sizeof(int));
+			if (!map->color_z[y][x])
+				free_arr(map);
 			color = ft_split(value[x], ',');
 			map->color_z[y][x][0] = ft_atoi(value[x]);
 			map->color_z[y][x][1] = hex_to_deci_color(color[1]);

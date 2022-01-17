@@ -6,15 +6,15 @@
 #    By: alfred <alfred@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/01/09 10:39:07 by alfred        #+#    #+#                  #
-#    Updated: 2022/01/12 16:05:04 by alfred        ########   odam.nl          #
+#    Updated: 2022/01/17 10:27:31 by fpolycar      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
-LIBRARIES = -L$(MLX_DIRECTORY) -L$(LIBFT_DIRECTORY) Memd/libmemd.a -lm -lft  -lmlx -framework OpenGL -framework AppKit
+FLAGS = -Wall -Werror -Wextra -fsanitize=address -fno-omit-frame-pointer
+LIBRARIES = -L$(MLX_DIRECTORY) -L$(LIBFT_DIRECTORY) -lm -lft  -lmlx -framework OpenGL -framework AppKit
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(MLX_HEADERS) -I./Memd/
 
 LIBFT = $(LIBFT_DIRECTORY)libft.a
@@ -40,7 +40,7 @@ OBJECTS = $(addprefix $(OBJECTS_DIRECTORY), $(o-files))
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS) Memd/libmemd.a
+$(NAME): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS)
 	$(CC) $(FLAGS) $(INCLUDES) $(OBJECTS) -o $(NAME) $(LIBRARIES)
 
 $(OBJECTS_DIRECTORY):

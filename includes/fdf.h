@@ -6,14 +6,14 @@
 /*   By: alfred <alfred@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/05 10:23:05 by alfred        #+#    #+#                 */
-/*   Updated: 2022/01/12 15:45:21 by alfred        ########   odam.nl         */
+/*   Updated: 2022/01/17 10:46:13 by fpolycar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# define WINDOW_X 500
-# define WINDOW_Y 500
+# define WINDOW_X 1000
+# define WINDOW_Y 1000
 # define ARROW_UP 126
 # define ARROW_DOWN 125
 # define ARROW_LEFT 123
@@ -35,7 +35,6 @@
 # include <stdlib.h>
 # include <math.h>
 # include <fcntl.h>
-# include "mem.h"
 # include "get_next_line.h"
 # include "libft.h"
 
@@ -100,25 +99,25 @@ typedef struct s_rgb
 	int	b;
 }				t_rgb;
 
-t_data		init_window(void);
-void		put_image(t_data img);
-void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
-t_arr_map	get_file(char *filename);
-void		scale(t_arr_map map, float scale_val);
-void		loop_draw(t_arr_map map, t_data img);
-void		draw_line(t_data fdf, t_point f, t_point s);
-void		init_brehensam(t_line coor, t_data img);
-t_camera	*camera_init(t_data fdf);
-int			key_hook(int keycode, t_data *fdf);
-t_point		new_point(int x, int y, t_arr_map *map);
-t_point		project(t_point p, t_data *fdf);
-int			key_press(int key, void *param);
-void		rotate(int key, t_data *fdf);
-void		move(int key, t_data *fdf);
-void		flatten(int key, t_data *fdf);
-int			zoom(int keycode, t_data *fdf);
-void		loop_brehensam(t_line coor, t_point f, t_point s, t_data fdf);
-int			get_color(t_point current, t_point f, t_point s, t_line coor);
+t_data			init_window(void);
+void			put_image(t_data img);
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
+t_arr_map		get_file(char *filename);
+void			scale(t_arr_map map, float scale_val);
+void			loop_draw(t_arr_map map, t_data img);
+void			draw_line(t_data fdf, t_point f, t_point s);
+void			init_brehensam(t_line coor, t_data img);
+t_camera		*camera_init(t_data fdf);
+int				key_hook(int keycode, t_data *fdf);
+t_point			new_point(int x, int y, t_arr_map *map);
+t_point			project(t_point p, t_data *fdf);
+int				key_press(int key, void *param);
+void			rotate(int key, t_data *fdf);
+void			move(int key, t_data *fdf);
+void			flatten(int key, t_data *fdf);
+int				zoom(int keycode, t_data *fdf);
+void			loop_brehensam(t_line coor, t_point f, t_point s, t_data fdf);
+int				get_color(t_point current, t_point f, t_point s, t_line coor);
 unsigned long	hex_to_deci_color(char *str);
 
 #endif
