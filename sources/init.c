@@ -6,7 +6,7 @@
 /*   By: fpolycar <fpolycar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/15 16:43:21 by fpolycar      #+#    #+#                 */
-/*   Updated: 2022/01/11 13:21:37 by alfred        ########   odam.nl         */
+/*   Updated: 2022/03/10 10:11:26 by fpolycar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_camera	*camera_init(t_data fdf)
 
 	camera = (t_camera *)malloc(sizeof(t_camera));
 	if (!camera)
-		return (NULL);
+		exit(EXIT_FAILURE);
 	if (WINDOW_X / fdf.map.col / 2 <= WINDOW_Y / fdf.map.row / 2)
 		camera->zoom = WINDOW_X / fdf.map.col / 2;
 	else

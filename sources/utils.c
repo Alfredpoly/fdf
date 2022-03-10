@@ -6,11 +6,17 @@
 /*   By: alfred <alfred@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/07 13:52:30 by alfred        #+#    #+#                 */
-/*   Updated: 2022/01/17 10:38:35 by fpolycar      ########   odam.nl         */
+/*   Updated: 2022/03/10 10:21:23 by fpolycar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	free_exit(t_arr_map *map)
+{
+	free_arr(map);
+	exit(EXIT_FAILURE);
+}
 
 t_point	new_point(int x, int y, t_arr_map *map)
 {

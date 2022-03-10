@@ -6,7 +6,7 @@
 /*   By: alfred <alfred@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/05 10:23:05 by alfred        #+#    #+#                 */
-/*   Updated: 2022/01/17 10:46:13 by fpolycar      ########   odam.nl         */
+/*   Updated: 2022/03/10 10:19:38 by fpolycar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,7 @@ int				zoom(int keycode, t_data *fdf);
 void			loop_brehensam(t_line coor, t_point f, t_point s, t_data fdf);
 int				get_color(t_point current, t_point f, t_point s, t_line coor);
 unsigned long	hex_to_deci_color(char *str);
+void 			free_exit(t_arr_map *map);
+void			free_arr(t_arr_map *map);
 
 #endif

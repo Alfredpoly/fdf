@@ -6,14 +6,14 @@
 #    By: alfred <alfred@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/01/09 10:39:07 by alfred        #+#    #+#                  #
-#    Updated: 2022/02/21 14:32:10 by fpolycar      ########   odam.nl          #
+#    Updated: 2022/03/10 10:10:30 by fpolycar      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
 CC = gcc
-FLAGS = -Wall -Werror -Wextra -fno-omit-frame-pointer #-fsanitize=address
+FLAGS = -Wall -Werror -Wextra #-fno-omit-frame-pointer -fsanitize=address
 LIBRARIES = -L$(MLX_DIRECTORY) -L$(LIBFT_DIRECTORY) -lm -lft  -lmlx -framework OpenGL -framework AppKit
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(MLX_HEADERS) -I./Memd/
 

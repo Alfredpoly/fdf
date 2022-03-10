@@ -6,7 +6,7 @@
 /*   By: fpolycar <fpolycar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/16 11:00:28 by fpolycar      #+#    #+#                 */
-/*   Updated: 2022/01/17 10:44:49 by fpolycar      ########   odam.nl         */
+/*   Updated: 2022/03/10 10:21:05 by fpolycar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	init_arr(t_arr_map *map, int y)
 	{
 		map->color_z = (int ***)malloc(map->row * sizeof(int **));
 		if (!map->color_z)
-			free_arr(map);
+			free_exit(map);
 	}
 }
 
@@ -81,18 +81,17 @@ void	get_char_in_line(char *str, int y, t_arr_map *map)
 	{
 		map->color_z[y] = (int **)malloc(map->col * sizeof(int *));
 		if (!map->color_z[y])
-			free_arr(map);
+			free_exit(map);
 		while (value[x])
 		{
 			if (value[x][0] == '\n')
 				break ;
 			map->color_z[y][x] = (int *)malloc(2 * sizeof(int));
 			if (!map->color_z[y][x])
-				free_arr(map);
+				free_exit(map);
 			color = ft_split(value[x], ',');
 			map->color_z[y][x][0] = ft_atoi(value[x]);
-			map->color_z[y][x][1] = hex_to_deci_color(color[1]);
-			x++;
+			map->color_z[y][x++][1] = hex_to_deci_color(color[1]);
 		}
 	}
 }
@@ -106,6 +105,11 @@ t_arr_map	get_file(char *filename)
 
 	y = 0;
 	fd = open(filename, O_RDONLY);
+	if (fd < 0 || fd > 1024)
+	{
+		write(1, "Something went wrong >> ./fdf [path to map.fdf]\n", 48);
+		exit(EXIT_FAILURE);
+	}
 	str = get_next_line(fd);
 	col_row(filename, &map);
 	while (str)

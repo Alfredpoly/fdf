@@ -6,7 +6,7 @@
 /*   By: fpolycar <fpolycar@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/15 16:44:14 by fpolycar      #+#    #+#                 */
-/*   Updated: 2022/01/12 16:05:45 by alfred        ########   odam.nl         */
+/*   Updated: 2022/03/10 09:52:59 by fpolycar      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,6 @@ int	main(int argc, char **argv)
 		loop_draw(fdf.map, fdf);
 		mlx_loop(fdf.mlx);
 	}
+	else
+		write(1, "Something went wrong >> ./fdf [path to map.fdf]\n", 48);
 }
