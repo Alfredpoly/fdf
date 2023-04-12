@@ -33,7 +33,11 @@ fdf takes a file as parameter and displays the map in 3D.
 
 ## Screenshots
 
+<img width="1083" alt="" src="https://user-images.githubusercontent.com/36860113/231562209-03a67030-2f95-40e0-b555-8d3e94871420.png">
 
+<img width="1083" alt="" src="https://user-images.githubusercontent.com/36860113/231562197-9c43cdcb-3fc6-4535-9280-10c72f6745f5.png">
+
+<img width="1433" alt="" src="https://user-images.githubusercontent.com/36860113/231562178-2abfa338-48f2-48e5-b1ab-6f565aa5ca46.png">
 
 # What I learned
 
