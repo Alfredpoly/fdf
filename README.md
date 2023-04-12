@@ -6,12 +6,12 @@ The map is represented by a file containing a list of points in a 2D space. Each
 example of a map file:
 
 ```bash
-010 020 030 040
-100 200 300 400
-001 002 003 004
+0 1 1 1 1 1
+1 1 1 1 1 1
+0 0 0 0 0 0
+0 0 0 0 3 0
+4 0 0 5 0 0
 ```
-        
-
 
 ## How to use
 
