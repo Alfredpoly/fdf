@@ -23,7 +23,7 @@ void	background(t_data fdf)
 		y = 0;
 		while (y < WINDOW_Y)
 		{
-			my_mlx_pixel_put(&fdf, x, y, 0x49449);
+			my_mlx_pixel_put(&fdf, x, y, 0);
 			y++;
 		}
 		x++;

@@ -12,8 +12,8 @@
 
 #ifndef FDF_H
 # define FDF_H
-# define WINDOW_X 1000
-# define WINDOW_Y 1000
+# define WINDOW_X 1920
+# define WINDOW_Y 1080
 # define ARROW_UP 126
 # define ARROW_DOWN 125
 # define ARROW_LEFT 123
