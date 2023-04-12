@@ -3,7 +3,8 @@
 fdf (or file de fer in french) is a program that reads a file containing a map of a relief landscape and displays it in 3D.
 The goal of this project is to learn about graphics and to create a 3D representation of a map. 
 The map is represented by a file containing a list of points in a 2D space. Each point is represented by its coordinates and its altitude. The program reads the file and displays the map in 3D.
-example of a map file:
+
+**Example of a map file:**
 
 ```bash
 0 1 1 1 1 1
